@@ -1,106 +1,44 @@
 import React from 'react'
-import { useEffect, useState,initialState } from "react";
-import Location from './Location';
+import { useState, useEffect } from "react";
 
-function Button(Location) {
-const [counter, setCounter] = useState(0);
-const [taco,setTaco] =useState([])
-const [formData, setFormData] = useState({
-    count: initialState
-  });
-useEffect(() => {
-  function getData() {
-    const url = process.env.REACT_APP_API_URL + "click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/";
-    const opts = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
 
-    fetch(url, opts)
-      .then((res) => res.json())
-      .then((data) => {
-          console.log(data)
-          return data
-        })
-      .then((data) => setTaco(data))
-      .finally(console.log())
+function Button(props) {
+  const [count, setCount] = useState(0);
 
-      
-      
-     
-  }
-
-  
-    getData();
-    
+  useEffect(() => {
+    async function fetchCount() {
+      const response = await fetch("http://127.0.0.1:8000/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/");
+      const data = await response.json();
+      setCount(parseInt(data.count));
+    }
+    fetchCount();
   }, []);
 
-
-
-
- 
-    
-    
- 
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value, });
-    console.log(formData)
-  };
-
-  const increase = () => {
-    setCounter(parseInt(taco.count) + 1);
-    console.log(counter)
-    setFormData({count:counter})
-
-  };
-
-  const handleSubmit = (e) => {
-    increase()
-    Location()
-    console.log(formData)
-    e.preventDefault();
-    const url = process.env.REACT_APP_API_URL + `click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/`;
-    const opts = {
+  const incrementCount = async () => {
+    props.locationSubmit()
+    await fetch("http://127.0.0.1:8000/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/", {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({count:counter}),
-    };
-    fetch(url, opts)
-      .then((res) => res.json())
-      .then((data) => {
-          console.log(data)
-          return data
-        })
-      .then((data) => setTaco(data))
-      .finally(<h1>{taco ? <p>{taco.count}</p> : ""}</h1> )
-
+      body: JSON.stringify({
+        count: parseInt(count + 1)
+      })
+    });
+    setCount(parseInt(count + 1));
   };
-
-
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    handleSubmit()
-  }
 
   return (
     <div>
-        <h1>{taco ? <p>{taco.count}</p> : ""}</h1> 
-    
-            {/* <button name ='count' type="submit" value="Submit" onClick={increase}>
-            Click me
-            </button> */}
-            <form onSubmit={handleSubmit}> 
-            <button className ="submit button" type="submit" value="Submit" onClick = {handleSubmit}>click</button>
-            </form>
-      
+      <p className='text'> Count: {count}</p>
+      <button onClick={incrementCount}>Click Me!</button>
     </div>
-  )
+  );
 }
 
-export default Button
+export default Button;
+
+
+
+
+

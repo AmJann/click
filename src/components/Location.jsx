@@ -1,9 +1,10 @@
+
 import React from 'react'
 import { useState, useEffect } from "react";
 
+
 function Location() {
     const [location, setLocation] = useState(null);
-
 
     useEffect(() => {
       fetch("https://api.ipdata.co/?api-key=b9d50f3dce9339757c8ae0f3036e689d991ebfe829c4869dacf3660a")
@@ -37,7 +38,17 @@ function Location() {
               console.log(data)
               return data
             })
-          .finally((data) => setLocation(data))
+          .then((data) => setLocation(data))
+          .finally(
+            <div>        {location && (
+                <div>
+                  <p>City: {location.city}</p>
+                  <p>State: {location.state}</p>
+                  <p>Country: {location.country}</p>
+                </div>
+              )}
+              s</div>
+          )
 
     
       };
