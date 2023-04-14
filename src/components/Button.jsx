@@ -1,13 +1,14 @@
 import React from 'react'
-import { useEffect, useState } from "react";
+import { useEffect, useState,initialState } from "react";
+import Location from './Location';
 
-function Button() {
+function Button(Location) {
 const [counter, setCounter] = useState(0);
 const [taco,setTaco] =useState([])
 const [formData, setFormData] = useState({
-    count: ""
+    count: initialState
   });
-
+useEffect(() => {
   function getData() {
     const url = process.env.REACT_APP_API_URL + "click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/";
     const opts = {
@@ -25,16 +26,18 @@ const [formData, setFormData] = useState({
         })
       .then((data) => setTaco(data))
       .finally(console.log())
+
+      
       
      
   }
 
-  useEffect(() => {
+  
     getData();
     
   }, []);
 
-  
+
 
 
  
@@ -55,6 +58,8 @@ const [formData, setFormData] = useState({
   };
 
   const handleSubmit = (e) => {
+    increase()
+    Location()
     console.log(formData)
     e.preventDefault();
     const url = process.env.REACT_APP_API_URL + `click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/`;
@@ -63,7 +68,7 @@ const [formData, setFormData] = useState({
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({count:counter}),
     };
     fetch(url, opts)
       .then((res) => res.json())
@@ -91,7 +96,7 @@ const [formData, setFormData] = useState({
             Click me
             </button> */}
             <form onSubmit={handleSubmit}> 
-            <button className ="submit button" type="submit" value="Submit" onClick={increase} >click</button>
+            <button className ="submit button" type="submit" value="Submit" onClick = {handleSubmit}>click</button>
             </form>
       
     </div>
