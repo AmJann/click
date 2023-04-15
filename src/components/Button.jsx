@@ -7,7 +7,7 @@ function Button(props) {
 
   useEffect(() => {
     async function fetchCount() {
-      const response = await fetch("https://ekkblykhielmnvufqelz.supabase.co/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVra2JseWtoaWVsbW52dWZxZWx6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE1MTk5ODIsImV4cCI6MTk5NzA5NTk4Mn0.K0hZHBg52yPGu8NwT3wlT7lN2dsdcQI11q7m5sqxH60");
+      const response = await fetch("https://click-django.onrender.com/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/");
       const data = await response.json();
       setCount(parseInt(data.count));
     }
@@ -16,7 +16,7 @@ function Button(props) {
 
   const incrementCount = async () => {
     props.locationSubmit()
-    await fetch("https://ekkblykhielmnvufqelz.supabase.co/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVra2JseWtoaWVsbW52dWZxZWx6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE1MTk5ODIsImV4cCI6MTk5NzA5NTk4Mn0.K0hZHBg52yPGu8NwT3wlT7lN2dsdcQI11q7m5sqxH60", {
+    await fetch("https://click-django.onrender.com/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"

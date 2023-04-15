@@ -5,6 +5,9 @@ import { useState, useEffect} from "react";
 import initialState from 'react'
 import '../src/index.css'
 
+
+
+
 function App() {
     const [location, setLocation] = useState(initialState);
     const [locations, setLocations] = useState([]);
@@ -29,7 +32,7 @@ function App() {
     const locationSubmit = (e) => {
 
     
-        const url = process.env.REACT_APP_API_URL + `location_create/api-key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVra2JseWtoaWVsbW52dWZxZWx6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE1MTk5ODIsImV4cCI6MTk5NzA5NTk4Mn0.K0hZHBg52yPGu8NwT3wlT7lN2dsdcQI11q7m5sqxH60`;
+        const url =  `https://click-django.onrender.com/location_create/`
         const opts = {
           method: "POST",
           headers: {
@@ -50,7 +53,7 @@ function App() {
       };
 
       function allLocations(){
-        fetch('https://ekkblykhielmnvufqelz.supabase.co/location/')
+        fetch(supabase + '/location/')
         .then(response => response.json())
         .then(data => setLocations(data))
         .catch(error => console.log(error));
