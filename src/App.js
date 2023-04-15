@@ -1,7 +1,8 @@
 import './App.css';
 import Button from './components/Button';
 import Location from './components/Location';
-import { useState, useEffect, initialState } from "react";
+import { useState, useEffect} from "react";
+import initialState from 'react'
 import '../src/index.css'
 
 function App() {
