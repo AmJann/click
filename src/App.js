@@ -29,7 +29,7 @@ function App() {
     const locationSubmit = (e) => {
 
     
-        const url = process.env.REACT_APP_API_URL + `location_create/`;
+        const url = process.env.REACT_APP_API_URL + `location_create/api-key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVra2JseWtoaWVsbW52dWZxZWx6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE1MTk5ODIsImV4cCI6MTk5NzA5NTk4Mn0.K0hZHBg52yPGu8NwT3wlT7lN2dsdcQI11q7m5sqxH60`;
         const opts = {
           method: "POST",
           headers: {
