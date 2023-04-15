@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 
-
 function Button(props) {
   const [count, setCount] = useState(0);
 
