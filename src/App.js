@@ -50,7 +50,7 @@ function App() {
       };
 
       function allLocations(){
-        fetch('http://127.0.0.1:8000/location/')
+        fetch('https://ekkblykhielmnvufqelz.supabase.co/location/')
         .then(response => response.json())
         .then(data => setLocations(data))
         .catch(error => console.log(error));

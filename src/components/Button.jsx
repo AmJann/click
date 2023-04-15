@@ -7,7 +7,7 @@ function Button(props) {
 
   useEffect(() => {
     async function fetchCount() {
-      const response = await fetch("http://127.0.0.1:8000/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/");
+      const response = await fetch("https://ekkblykhielmnvufqelz.supabase.co/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/");
       const data = await response.json();
       setCount(parseInt(data.count));
     }
@@ -16,7 +16,7 @@ function Button(props) {
 
   const incrementCount = async () => {
     props.locationSubmit()
-    await fetch("http://127.0.0.1:8000/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/", {
+    await fetch("https://ekkblykhielmnvufqelz.supabase.co/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
