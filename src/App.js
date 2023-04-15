@@ -53,7 +53,7 @@ function App() {
       };
 
       function allLocations(){
-        fetch(supabase + '/location/')
+        fetch('https://click-django.onrender.com/location/')
         .then(response => response.json())
         .then(data => setLocations(data))
         .catch(error => console.log(error));
