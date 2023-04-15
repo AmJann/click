@@ -7,7 +7,7 @@ function Button(props) {
 
   useEffect(() => {
     async function fetchCount() {
-      const response = await fetch("https://click-django.onrender.com/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/");
+      const response = await fetch("https://click-django.onrender.com/click_edit/63603faa-dbcf-452c-b295-40a5621ca0f9/");
       const data = await response.json();
       setCount(parseInt(data.count));
     }
@@ -16,7 +16,7 @@ function Button(props) {
 
   const incrementCount = async () => {
     props.locationSubmit()
-    await fetch("https://click-django.onrender.com/click_edit/6e170058-bc58-4a8b-a33e-2c53c4ea14b6/", {
+    await fetch("https://click-django.onrender.com/click_edit/63603faa-dbcf-452c-b295-40a5621ca0f9/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
